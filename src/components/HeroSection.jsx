@@ -13,13 +13,13 @@ function HeroSection() {
           <div className="space-y-8">
             <div className="space-y-4">
               <h1 className="text-4xl md:text-7xl font-extrabold tracking-tight leading-tight">
-                <span className="opacity-0 animate-fade-in inline-block">Hi, I'm&nbsp;</span>
+                <span className="text-foreground opacity-0 animate-fade-in inline-block">Hi, I'm&nbsp;</span>
                 <br className="md:hidden" />
                 <span className="text-gradient opacity-0 animate-fade-in-delay-1 inline-block drop-shadow-[0_0_15px_rgba(var(--primary),0.3)]"> 
                   {" "} 
                   Sai Krishna 
                 </span>
-                <span className="text-white ml-2 opacity-0 animate-fade-in-delay-2 inline-block">
+                <span className="text-foreground ml-2 opacity-0 animate-fade-in-delay-2 inline-block">
                   {" "}
                   Sahu 
                 </span>
