@@ -36,7 +36,7 @@ function StarBackground() {
   })
 
   const [meteors, setMeteors] = useState(() => {
-    const numberOfMeteors = 3
+    const numberOfMeteors = 5
     const initialMeteors = []
     for (let i = 0; i < numberOfMeteors; i++) {
       initialMeteors.push({
