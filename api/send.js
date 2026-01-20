@@ -32,37 +32,108 @@ export default async function handler(req, res) {
         <html>
           <head>
             <style>
-              body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; }
-              .container { max-width: 600px; margin: 20px auto; padding: 20px; border: 1px solid #eee; border-radius: 10px; }
-              .header { background: #6366f1; color: white; padding: 10px 20px; border-radius: 10px 10px 0 0; }
-              .content { padding: 20px; background: #f9fafb; border-radius: 0 0 10px 10px; }
-              .field { margin-bottom: 15px; }
-              .label { font-weight: bold; color: #6366f1; display: block; margin-bottom: 5px; }
-              .value { background: white; padding: 10px; border-radius: 5px; border: 1px solid #e5e7eb; }
-              .footer { text-align: center; margin-top: 20px; font-size: 0.8em; color: #6b7280; }
+              body { 
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+                line-height: 1.6; 
+                color: #ffffff; 
+                background-color: #0f172a;
+                margin: 0;
+                padding: 0;
+              }
+              .wrapper {
+                background-color: #0f172a;
+                padding: 40px 20px;
+              }
+              .container { 
+                max-width: 600px; 
+                margin: 0 auto; 
+                background: #1e293b; 
+                border-radius: 20px; 
+                overflow: hidden;
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+              }
+              .header { 
+                background: linear-gradient(135deg, #3b82f6 0%, #2dd4bf 100%); 
+                color: white; 
+                padding: 40px 20px; 
+                text-align: center;
+              }
+              .header h1 {
+                margin: 0;
+                font-size: 28px;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+              }
+              .header p {
+                margin: 10px 0 0;
+                opacity: 0.9;
+                font-size: 14px;
+              }
+              .content { 
+                padding: 40px 30px; 
+              }
+              .title {
+                font-size: 22px;
+                font-weight: bold;
+                margin-bottom: 25px;
+                color: #f8fafc;
+                text-align: center;
+              }
+              .field { 
+                margin-bottom: 20px; 
+              }
+              .label { 
+                font-weight: 600; 
+                color: #94a3b8; 
+                display: block; 
+                margin-bottom: 8px;
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+              }
+              .value { 
+                color: #f1f5f9;
+                font-size: 16px;
+              }
+              .message-box {
+                margin-top: 30px;
+                padding: 25px;
+                border: 2px dashed #3b82f6;
+                border-radius: 15px;
+                background: rgba(59, 130, 246, 0.05);
+              }
+              .footer { 
+                text-align: center; 
+                padding: 30px; 
+                font-size: 12px; 
+                color: #64748b; 
+              }
             </style>
           </head>
           <body>
-            <div class="container">
-              <div class="header">
-                <h2>New Portfolio Message</h2>
-              </div>
-              <div class="content">
-                <div class="field">
-                  <span class="label">Name</span>
-                  <div class="value">${name}</div>
+            <div class="wrapper">
+              <div class="container">
+                <div class="header">
+                  <h1>Portfolio</h1>
+                  <p>Inquiry from your website</p>
                 </div>
-                <div class="field">
-                  <span class="label">Email</span>
-                  <div class="value">${email}</div>
+                <div class="content">
+                  <div class="title">New Message Received</div>
+                  
+                  <div class="field">
+                    <span class="label">From</span>
+                    <div class="value"><strong>${name}</strong> (${email})</div>
+                  </div>
+
+                  <div class="message-box">
+                    <span class="label">Message Content</span>
+                    <div class="value" style="white-space: pre-wrap; line-height: 1.8;">${message}</div>
+                  </div>
                 </div>
-                <div class="field">
-                  <span class="label">Message</span>
-                  <div class="value" style="white-space: pre-wrap;">${message}</div>
+                <div class="footer">
+                  This message was sent via your portfolio contact form.<br>
+                  &copy; ${new Date().getFullYear()} Sai Krishna Sahu
                 </div>
-              </div>
-              <div class="footer">
-                This message was sent via your portfolio contact form.
               </div>
             </div>
           </body>
