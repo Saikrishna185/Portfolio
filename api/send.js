@@ -24,7 +24,7 @@ export default async function handler(req, res) {
   try {
     const { data, error } = await resend.emails.send({
       from: 'Portfolio Contact <onboarding@resend.dev>',
-      to: ['sksahu.aug03@gmail.com'], // The user's email from ContactSection.jsx
+      to: ['sksahu2083@gmail.com'], // The email address linked to the Resend account
       subject: `New Contact Form Message from ${name}`,
       replyTo: email,
       html: `
