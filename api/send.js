@@ -72,7 +72,7 @@ export default async function handler(req, res) {
 
     if (error) {
       console.error('Resend Error:', error);
-      return res.status(400).json({ error });
+      return res.status(400).json({ error: error.message || 'Resend error occurred' });
     }
 
     return res.status(200).json({ success: true, data });
