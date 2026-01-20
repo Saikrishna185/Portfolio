@@ -14,20 +14,43 @@ function ContactSection() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      toast({
-        title: "Message sent!",
-        description: "Thank you for reaching out. I’ll get back to you soon.",
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
       });
+
+      if (response.ok) {
+        toast({
+          title: "Message sent successfully!",
+          description: "Thank you for reaching out. I’ll get back to you soon.",
+        });
+        e.target.reset();
+      } else {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Failed to send message");
+      }
+    } catch (error) {
+      toast({
+        title: "Submission failed",
+        description: error.message || "An error occurred while sending your message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
       setIsSubmitting(false);
-      e.target.reset();
-    }, 1500);
+    }
   };
+
 
   const socialLinks = [
     { faIcon: "fa-brands fa-linkedin", href: "https://www.linkedin.com/in/sai-krishna-sahu-51a33526b/", label: "LinkedIn" },
